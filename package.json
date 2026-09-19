@@ -1,0 +1,47 @@
+{
+  "name": "arima",
+  "version": "0.1.0",
+  "description": "Local-first desktop media manager.",
+  "private": true,
+  "main": "out/main/index.js",
+  "packageManager": "pnpm@10.15.1",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "test": "vitest run",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "smoke:startup": "pnpm build && env -u ELECTRON_RUN_AS_NODE ARIMA_STARTUP_SMOKE=1 electron out/main/index.js"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "4.3.3",
+    "electron-log": "5.4.4",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.3",
+    "@eslint/js": "9.39.1",
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "5.2.0",
+    "electron": "44.4.3",
+    "electron-vite": "5.0.0",
+    "eslint": "9.39.1",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-react-refresh": "0.4.24",
+    "jsdom": "27.3.0",
+    "playwright": "1.63.0",
+    "prettier": "3.7.4",
+    "tailwindcss": "4.3.3",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.70.0",
+    "vite": "7.3.6",
+    "vitest": "5.0.1"
+  }
+}
