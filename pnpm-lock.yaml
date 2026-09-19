@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@tailwindcss/vite':
-        specifier: 4.3.3
-        version: 4.3.3(vite@7.3.6(@types/node@24.10.1)(jiti@2.7.0)(lightningcss@1.32.0))
       electron-log:
         specifier: 5.4.4
         version: 5.4.4
@@ -27,6 +24,9 @@ importers:
       '@eslint/js':
         specifier: 9.39.1
         version: 9.39.1
+      '@tailwindcss/vite':
+        specifier: 4.3.3
+        version: 4.3.3(vite@7.3.6(@types/node@24.10.1)(jiti@2.7.0)(lightningcss@1.32.0))
       '@testing-library/dom':
         specifier: 10.4.1
         version: 10.4.1

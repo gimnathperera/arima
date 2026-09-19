@@ -34,6 +34,14 @@ export default defineConfig({
   preload: {
     build: {
       externalizeDeps: false,
+      rollupOptions: {
+        onwarn(warning, defaultHandler) {
+          if (warning.code === 'INVALID_ANNOTATION') {
+            return;
+          }
+          defaultHandler(warning);
+        },
+      },
     },
     resolve: {
       alias: {
