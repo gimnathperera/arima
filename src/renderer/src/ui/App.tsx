@@ -6,11 +6,28 @@ type AppInfoState =
   | { status: 'ready'; data: AppInfo }
   | { status: 'error'; message: string };
 
+function getInitialAppInfoState(): AppInfoState {
+  if (!window.arima) {
+    return {
+      status: 'error',
+      message: 'The secure preload bridge did not load. Restart the app and check the main process logs.',
+    };
+  }
+
+  return { status: 'loading' };
+}
+
 export function App(): React.JSX.Element {
-  const [appInfo, setAppInfo] = useState<AppInfoState>({ status: 'loading' });
+  const [appInfo, setAppInfo] = useState<AppInfoState>(getInitialAppInfoState);
 
   useEffect(() => {
     let active = true;
+
+    if (!window.arima) {
+      return () => {
+        active = false;
+      };
+    }
 
     void window.arima.app.getInfo().then((result) => {
       if (!active) {
@@ -33,11 +50,11 @@ export function App(): React.JSX.Element {
   return (
     <main className="shell">
       <section className="panel" aria-labelledby="app-title">
-        <p className="eyebrow">Local-first media library</p>
+        <p className="eyebrow">Arima</p>
         <h1 id="app-title">Arima</h1>
         <p className="summary">
           Secure desktop foundation is running. Media analysis, downloads, playback, and
-          persistence arrive in later phases.
+          persistence arrive in later phases. xD
         </p>
 
         <dl className="facts" aria-label="Application metadata">

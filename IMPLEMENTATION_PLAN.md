@@ -1407,3 +1407,11 @@ Append entries; do not rewrite historical decisions. Supersede a decision with a
 - Decisions/deviations: kept the planned dependency pins; added direct `@eslint/js`, testing support packages, React type packages, Prettier, and jsdom required by the chosen tooling; removed package-level ESM so Electron main builds as CommonJS; renamed ESLint config to `eslint.config.mjs`; smoke script unsets inherited `ELECTRON_RUN_AS_NODE`.
 - Known limitations: SQLite, media analysis, downloads, storage roots, bundled media tools, playback, update checks, packaging, signing, and distribution remain future phases.
 - Recommended next step: Start Phase 2 only after explicit instruction.
+
+### 2026-09-19 — Phase 1 dev startup fix
+
+- Fixed a blank dev-window issue caused by the navigation guard blocking Electron's initial top-level navigation from the blank page to the local Vite renderer.
+- Updated the allow-list to accept the active `ELECTRON_RENDERER_URL` origin in development, including fallback ports when `5173` is already occupied, while keeping packaged builds limited to local file renderer URLs.
+- Added regression coverage for approved dev/file renderer URLs and rejected external URLs.
+- Commands and results: `pnpm check` passed with lint, strict typecheck, 4 test files, 9 tests, and production build; `pnpm smoke:startup` passed.
+- Operational note: if a blank dev instance is already running, stop it with `Ctrl+C` and run `pnpm dev` again so Electron starts with the updated main-process code.
