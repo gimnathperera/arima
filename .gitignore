@@ -21,3 +21,6 @@ Thumbs.db
 *.sqlite
 *.sqlite-shm
 *.sqlite-wal
+.vscode/
+.idea/
+
